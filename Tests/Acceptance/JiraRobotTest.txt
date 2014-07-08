@@ -1,0 +1,37 @@
+*** Settings ***
+Library         JiraRobot
+
+*** Variables *** 
+${jirausername}         YOURUSERNAME   # optional, but will auth with anon account
+${jirapassword}         YOURPASSWORD   # optional, if given a username will prompt for password during runtime
+
+${jiraserver}           YOURJIRASERVER   # e.g. http://jira.atlassian.com
+
+${usertoassign}         ANOTHERUSER
+
+*** Test Cases ***
+
+JIRARobot Test
+    connect to jira 	               options={'server': '${jiraserver}'}
+    Log 	get current user
+
+    ${issue1}=     Create new Issue         PROJECT        Test Jira Robot             Testing Jira Robot issue creation            Task            Trivial      True
+    ${issue2}=     Create new Issue         PROJECT        New JiraRobot Issue         Look into jirarobot issue                    Bug             Blocker
+
+    create issue link           relates to             ${issue2}                ${issue1} 
+    add watcher to issue		${issue2} 		       ${jirausername}
+    add comment to issue 		${issue2} 		       Testing add comments to issue
+    assign user to issue	 	${issue2} 	           ${usertoassign}
+    add attachment to issue     ${issue2}              ./FILE.txt               AttachmentFile.txt
+
+
+*** Keywords ***
+
+Create new Issue          
+    [arguments]         ${project}          ${summary}          ${description}      ${issuetype}        ${priority}       ${assigntouser}=False
+    ${issuestring}=      Set Variable        {'project':{'key': '${project}'}, 'summary':'${summary}', 'description':'${description}', 'issuetype':{'name': '${issuetype}'}, 'priority':{'name': '${priority}'}}
+    ${issue}=           create issue        ${issuestring}      ${assigntouser}
+    Log     ${issue}
+    [return]    ${issue} 
+
+

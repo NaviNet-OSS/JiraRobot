@@ -1,0 +1,10 @@
+Version 1.0 - Initial Release
+---------------------
+- Connect to JIRA
+- Create Issue
+- Create Issue Link
+- Add Watcher to Issue
+- Add Comment to Issue
+- Assign User to Issue
+- Add Attachment to Issue
+- Get Current User
