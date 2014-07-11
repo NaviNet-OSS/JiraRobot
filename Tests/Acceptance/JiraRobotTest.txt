@@ -15,8 +15,8 @@ JIRARobot Test
     connect to jira 	               options={'server': '${jiraserver}'}
     Log 	get current user
 
-    ${issue1}=     Create new Issue         PROJECT        Test Jira Robot             Testing Jira Robot issue creation            Task            Trivial      True
-    ${issue2}=     Create new Issue         PROJECT        New JiraRobot Issue         Look into jirarobot issue                    Bug             Blocker
+    ${issue1}=     Create new Issue         PROJECT        Test Jira Robot             Testing Jira Robot issue creation            Task            Trivial      True   # The project, issue type and priority may need changed
+    ${issue2}=     Create new Issue         PROJECT        New JiraRobot Issue         Look into jirarobot issue                    Bug             Blocker             # to match your JIRA
 
     create issue link           relates to             ${issue2}                ${issue1} 
     add watcher to issue		${issue2} 		       ${jirausername}

@@ -73,7 +73,7 @@ However, if the package was installed manually it will need to be uninstalled ma
 
 1) Navigate to ``C:\Python27`` and delete JiraRobotTests
 
-2) Navigate to ``C:\Python27\Lib\site-packages`` and delete JiraRobot-1.0-py2.7.egg-info and the folder ``JiraRobot``
+2) Navigate to ``C:\Python27\Lib\site-packages`` and delete JiraRobot-0.2-py2.7.egg-info and the folder ``JiraRobot``
 
 Directory Layout
 ----------------
@@ -118,7 +118,7 @@ The [Create Issues Example](https://developer.atlassian.com/display/JIRADEV/JIRA
 
 When using the *Create Issue* keyword a dictionary must be passed in, in the form of a string (see the [Keyword Documentation](http://navinet.github.io/JiraRobot/JiraRobot-KeywordDocumentation.html) for more information). 
 
-In this dictionary/string issue field names must be stated along with their respective values. Some field types my only accept certain types of values or patterns e.g. Date Fields must be input in the format 'YYYY-MM-DD'. Check [here](https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Create+Issue#JIRARESTAPIExample-CreateIssue-Examplesofhowtosetcustomfielddataforotherfieldtypes:) for more information on field and value types.
+In this dictionary/string issue field names must be stated along with their respective values. Some field types my only accept certain types of values or patterns e.g. Date Fields must be input in the format 'YYYY-MM-DD' and MultiSelect fields will only accept an array of dictionaries ("customfield_10008": [ {"value": "red" }, {"value": "blue" }, {"value": "green" }]). It is very important to get the value type right or an error will be thrown so check [here](https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Create+Issue#JIRARESTAPIExample-CreateIssue-Examplesofhowtosetcustomfielddataforotherfieldtypes:) for more information on field and their value types.
 
 Some issues may have custom fields the names of these fields is the ID of the field itself generally in the form 'customfield_(NUM)'. The ID of the field can be found by inspecting the element in an internet browser. More information can be found [here](https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Create+Issue#JIRARESTAPIExample-CreateIssue-Exampleofcreatinganissueusingcustomfields).
 

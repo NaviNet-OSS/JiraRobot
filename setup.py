@@ -23,7 +23,7 @@ sys.path.append(join(dirname(__file__), 'JiraRobot'))
 execfile(join(dirname(__file__), 'JiraRobot', 'version.py'))
 
 DESCRIPTION = """
-JiraRobot is a robot library for interacting with 
+JiraRobot is a robot library for interacting with
 JIRA through the use of jirapython and JIRA REST API
 """[1:-1]
 
@@ -52,5 +52,5 @@ setup(name              = 'JiraRobot',
 				],
       packages          = ['JiraRobot'],
       data_files        = [('JiraRobotTests', ['Tests/acceptance/JiraRobotTest.txt', 'Tests/acceptance/FILE.txt', 'Docs/JiraRobot-KeywordDocumentation.html'])],
-      download_url      = 'https://github.com/NaviNet/JiraRobot/tarball/1.0',
+      download_url      = 'https://github.com/NaviNet/JiraRobot/tarball/0.2',
       )
