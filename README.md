@@ -109,7 +109,13 @@ Before running the testscertain variables must be changed to make a successful t
 - jiraserver - The url of the JIRA server to connect to
 - usertoassign - The second user to assign to the second issue created (should be different from the orignal user but can be the same if you desire)
 
-To run the test navigate to ``C:\Python\JiraRobotTests`` directory. Open a command prompt withing this folder and run:
+In the create issue keywords the variables below may need changed to match yoru JIRA server
+
+- project
+- issue type
+- priority 
+
+To run the test after installing, navigate to ``C:\Python\JiraRobotTests`` directory. Open a command prompt withing this folder and run:
 
     pybot JiraRobotTest.txt
 
