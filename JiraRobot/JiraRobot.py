@@ -51,7 +51,8 @@ class JiraRobot:
                 |  connect to jira  |  uExample 	| options= {'https://jira.atlassian.com'} 	|    										|
                 |  connect to jira  |  uExample 	| uPassword 								| {'server': 'https://jira.atlassian.com'} 	|
         """
-        if JIRAUsername is not None and JIRAPassword is None:
+
+        if JIRAUsername is not None and (JIRAPassword is "" or JIRAPassword is None):
             JIRAPassword = getpass.getpass("\nJIRA Password: ")
 		
         print JIRAUsername
@@ -87,6 +88,9 @@ class JiraRobot:
             The field value can also be another dictionary (in some field cases this is needed)
                 e.g. {'FieldName1':{'key':'value'}, 'FieldName2':FieldValue, 'FieldName3':{'name':'value'}}
 
+            This Create Issue Example page (https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Create+Issue) is full of useful information in what is required for creating issues, including customfields and issue field value types, it is very important to get the value type right or an error will be thrown.
+
+
             Examples:
                 |  *Keyword*        	|  *Parameters*   	| 														| 		|
                 |  ${issue_field_dict} 	|  {'project':{'key': 'PROJ'}, 'summary':'Create New Issue', 'description':'Creating a new issue', 'issuetype':{'name': 'Bug'}} |    |
@@ -99,7 +103,7 @@ class JiraRobot:
         issue_field_dict = eval(str(issue_field_dict))
         print issue_field_dict
 
-        new_issue = self.jira.create_issue(fields=issue_field_dict)
+        new_issue = self.jira.create_issue(issue_field_dict)
         if assign_current_user is True:
             self.assign_user_to_issue(new_issue, self.jira.current_user())
         return new_issue
@@ -199,12 +203,3 @@ class JiraRobot:
         """
         self.jira.add_attachment(issue=issue, attachment=attachment,
                                  filename=filename)
-
-
-    # def print_projects(self):
-    # 	projects = self.jira.projects()
-    # 	sys.__stdout__.write(str(projects))
-
-    # def print_issue_fields(self):
-    # 	fields = self.jira.fields()
-    # 	sys.__stdout__.write(str(fields))

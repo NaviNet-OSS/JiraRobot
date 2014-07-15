@@ -3,7 +3,7 @@ Library         JiraRobot
 
 *** Variables *** 
 ${jirausername}         YOURUSERNAME   # optional, but will auth with anon account
-${jirapassword}         YOURPASSWORD   # optional, if given a username will prompt for password during runtime
+${jirapassword}         YOURPASSWORD   # optional, if given a username will prompt for password during runtime  
 
 ${jiraserver}           YOURJIRASERVER   # e.g. http://jira.atlassian.com
 
@@ -12,10 +12,10 @@ ${usertoassign}         ANOTHERUSER
 *** Test Cases ***
 
 JIRARobot Test
-    connect to jira 	               options={'server': '${jiraserver}'}
+    connect to jira 	     ${jirausername}       ${jirapassword}        options={'server': '${jiraserver}'}  # remove the ${jirapassword} variable should you wish to use the prompt to input your password
     Log 	get current user
 
-    ${issue1}=     Create new Issue         PROJECT        Test Jira Robot             Testing Jira Robot issue creation            Task            Trivial      True   # The project, issue type and priority may need changed
+    ${issue1}=     Create new Issue         PROJECT        Test Jira Robot             Testing Jira Robot issue creation            Task            Medium      True   # The project, issue type and priority may need changed
     ${issue2}=     Create new Issue         PROJECT        New JiraRobot Issue         Look into jirarobot issue                    Bug             Blocker             # to match your JIRA
 
     create issue link           relates to             ${issue2}                ${issue1} 
@@ -29,9 +29,7 @@ JIRARobot Test
 
 Create new Issue          
     [arguments]         ${project}          ${summary}          ${description}      ${issuetype}        ${priority}       ${assigntouser}=False
-    ${issuestring}=      Set Variable        {'project':{'key': '${project}'}, 'summary':'${summary}', 'description':'${description}', 'issuetype':{'name': '${issuetype}'}, 'priority':{'name': '${priority}'}}
+    ${issuestring}=      Set Variable        {'project': {'key': '${project}'}, 'summary': '${summary}', 'description': '${description}', 'issuetype': {'name': '${issuetype}'}}
     ${issue}=           create issue        ${issuestring}      ${assigntouser}
     Log     ${issue}
     [return]    ${issue} 
-
-
