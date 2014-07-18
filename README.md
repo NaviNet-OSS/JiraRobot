@@ -74,7 +74,7 @@ However, if the package was installed manually it will need to be uninstalled ma
 
 1) Navigate to ``C:\Python27`` and delete JiraRobotTests
 
-2) Navigate to ``C:\Python27\Lib\site-packages`` and delete JiraRobot-0.3-py2.7.egg-info and the folder ``JiraRobot``
+2) Navigate to ``C:\Python27\Lib\site-packages`` and delete JiraRobot-1.0-py2.7.egg-info and the folder ``JiraRobot``
 
 Directory Layout
 ----------------
@@ -102,7 +102,7 @@ Running the Demo
 The test file *JiraRobotTest.txt*, is an easily executable test for Robot Framework using JiraRobot Library. 
 For in depth detail on how the keywords function, read the Keyword documentation found here: [Keyword Documentation](http://navinet.github.io/JiraRobot/JiraRobot-KeywordDocumentation.html)
 
-Before running the testscertain variables must be changed to make a successful test run; 
+Before running the tests, certain variables must be changed to make a successful test run; 
 
 - jirausername - The user you wish to authenticate with 
 - jirapassword - If a username is given this can be set as that users password. Optional, but if username is given it will prompt for password at test execution but won't save the password

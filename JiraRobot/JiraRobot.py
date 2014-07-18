@@ -28,15 +28,15 @@ class JiraRobot:
     def connect_to_jira(self, JIRAUsername=None,
                         JIRAPassword=None, options=None):
         """
-        Connect to a JIRA machine.
+        Connect to a JIRA server.
 
             Arguments:
-                |  JIRAUsername (string)  	|  (Optional) A JIRA Username you wish to authenticate with             				|
-                |  JIRAPassword (string)  	|  (Optional) A JIRA Password you wish to authenticate a Username with 					|
-                |  options (dictionary) 	|  (Optional) A dictionary of options that the JIRA connection will be initialied with 	|
+                |  JIRAUsername (string)  	|  (Optional) A JIRA Username you wish to authenticate with, will authorise with anonymous account if left empty      				|
+                |  JIRAPassword (string)  	|  (Optional) If a username was specified and a password is not the user will be prompted for password at runtime 					|
+                |  options (dictionary) 	|  (Optional) A dictionary of options that the JIRA connection will be initialied with 	                                            |
 
             This must be called first to be able to do most JIRA actions such as creating a new issue and assigning users.
-            When connecting to JIRA you may need to authenticate a user. This can be done by passing in Username and Password as parameters. However, should you wish to not have a sensitive password saved in a file,  an option is available to not pass in a Password and a prompt will appear asking for the JIRA password.
+            When connecting to JIRA you may need to authenticate a user. This can be done by passing in Username and Password as parameters. However, should you wish to not have a sensitive password saved in a file,  an option is available to not pass in a Password and a prompt will appear asking for the JIRA password at runtime.
 
 
             'connect to jira' can be called on its own and will default options to:
@@ -46,10 +46,10 @@ class JiraRobot:
             These can all be customised as needed.
 
             Examples:
-                |  *Keyword*        |  *Parameters* | 											| 											|
-                |  connect to jira  |  				|           								|                          					|
-                |  connect to jira  |  uExample 	| options= {'https://jira.atlassian.com'} 	|    										|
-                |  connect to jira  |  uExample 	| uPassword 								| {'server': 'https://jira.atlassian.com'} 	|
+                |  *Keyword*        |  *Parameters* | 									| 									|
+                |  connect to jira  |  				|           						|                          			|
+                |  connect to jira  |  asimmons	    | options= {'http://devjira01'} 	|    								|
+                |  connect to jira  |  asimmond 	| MyP@ssword 						| {'server': http://devjira01'} 	|
         """
 
         if JIRAUsername is not None and (JIRAPassword is "" or JIRAPassword is None):
@@ -81,7 +81,7 @@ class JiraRobot:
                 |  issue_field_dict (string)  			| A dictionary in the form of a string that the user can specify the issues fields and field values 			|
                 |  assign_current_user (string/bool)  	| (Optional) A flag to assign the current user to the issue once it is successfully created, defaults to False	|
 
-            Will create a new issue in the JIRA server connected to in the Connect to JIRA keyword. and returns an Issue Key
+            Will create a new issue and returns an Issue Key.
             The user will use the issue_field_dict variable to specify the issues field and their respective values. This must be in the form of a string written as a dictionary
                 e.g. {'FieldName':'FieldValue'}
 
@@ -94,10 +94,10 @@ class JiraRobot:
             Examples:
                 |  *Keyword*        	|  *Parameters*   	| 														| 		|
                 |  ${issue_field_dict} 	|  {'project':{'key': 'PROJ'}, 'summary':'Create New Issue', 'description':'Creating a new issue', 'issuetype':{'name': 'Bug'}} |    |
-                |  connect to jira  	|  uExample 		|  options= {'server': 'https://jira.atlassian.com'} 	|
+                |  connect to jira      |  asimmons         | options= {'http://devjira01'}                         |       |
                 |  ${issue}				|  create issue 	|  ${issue_field_dict}									|      	|
 
-                |  connect to jira  	|  uExample 		|  options= {'server': 'https://jira.atlassian.com'} 	|  		|
+                |  connect to jira      |  asimmons         | options= {'http://devjira01'}                         |  		|
                 |  ${issue}				|  create issue 	|  ${issue_field_dict}									|  True |
         """
         issue_field_dict = eval(str(issue_field_dict))
@@ -120,10 +120,10 @@ class JiraRobot:
                 |  comment (string)  		| (Optional) A comment to add when joining issues	|
 
             Example:
-                |  *Keyword*        	|  *Parameters* | 													 	| 			|
-                |  connect to jira  	|  uExample 	|  options= {'server': 'https://jira.atlassian.com'} 	|  			|
-                |  ${issue}				|  create issue |  ${issue_field_dict}									|  True 	|
-                |  create issue link	|  relates to   |  ${issue} 											|  PROJ-385	|
+                |  *Keyword*        	|  *Parameters* | 									| 			|
+                |  connect to jira      |  asimmons     | options= {'http://devjira01'}     |  			|
+                |  ${issue}				|  create issue |  ${issue_field_dict}				|  True 	|
+                |  create issue link	|  relates to   |  ${issue} 						|  PROJ-385	|
         """
         self.jira.create_issue_link(type=link_type,
                                     inwardIssue=str(inwardissue),
@@ -139,10 +139,10 @@ class JiraRobot:
             |  JIRAUsername (string)  	| A JIRA Username to assign a user to an issue   									|
 
         Example:
-           |  *Keyword*        		|  *Parameters* | 													 	|
-           |  connect to jira  		|  uExample 	|  options= {'server': 'https://jira.atlassian.com'} 	|
-           |  ${issue}				|  create issue |  ${issue_field_dict}									|
-           |  assign user to issue	|  ${issue}		|  aSample 												|
+           |  *Keyword*        		|  *Parameters* | 									|
+           |  connect to jira       |  asimmons     | options= {'http://devjira01'}     |
+           |  ${issue}				|  create issue |  ${issue_field_dict}				|
+           |  assign user to issue	|  ${issue}		|  aSample 							|
         """
         self.jira.assign_issue(issue=issue, assignee=JIRAUsername)
 
@@ -161,10 +161,10 @@ class JiraRobot:
             |  JIRAUsername (string)  	| A JIRA Username to add as a watcher to an issue   					|
 
         Example:
-            |  *Keyword*        	|  *Parameters* | 													 	|		|
-            |  connect to jira  	|  uExample 	|  options= {'server': 'https://jira.atlassian.com'} 	| 		|
-            |  ${issue}				|  create issue |  ${issue_field_dict}									|  True |
-            |  add watcher to issue	|  ${issue}		|  aSample 												| 		|
+            |  *Keyword*        	|  *Parameters* | 								|		|
+            |  connect to jira  |  asimmons     | options= {'http://devjira01'}     | 		|
+            |  ${issue}				|  create issue |  ${issue_field_dict}			|  True |
+            |  add watcher to issue	|  ${issue}		|  aSample 						| 		|
 
         """
         self.jira.add_watcher(issue=issue, watcher=JIRAUsername)
@@ -179,10 +179,10 @@ class JiraRobot:
                 |  visibility (string)  	| (Optional)															|
 
             Example:
-                |  *Keyword*        	|  *Parameters* | 													 	|		|
-                |  connect to jira  	|  uExample 	|  options= {'server': 'https://jira.atlassian.com'} 	| 		|
-                |  ${issue}				|  create issue |  ${issue_field_dict}									|  True |
-                |  add comment to issue	|  ${issue}		|  Starting work on this issue							| 		|
+                |  *Keyword*        	|  *Parameters* | 									|		|
+                |  connect to jira      |  asimmons     |  options= {'http://devjira01'}    | 		|
+                |  ${issue}				|  create issue |  ${issue_field_dict}				|  True |
+                |  add comment to issue	|  ${issue}		|  Starting work on this issue		| 		|
         """
         self.jira.add_comment(issue=issue, body=comment)
 
@@ -196,10 +196,10 @@ class JiraRobot:
             |   filename (string)  	| (Optional) A string to rename the file to upon attaching to the issue  	|
 
         Example:
-            |  *Keyword*        		|  *Parameters* | 													 	|						|
-            |  connect to jira  		|  uExample 	|  options= {'server': 'https://jira.atlassian.com'} 	| 						|
-            |  ${issue}					|  create issue |  ${issue_field_dict}									|  True 			 	|
-            |  add attchment to issue	|  ${issue}		|  ./logfile.txt										|  LogInformation.txt	|
+            |  *Keyword*        		|  *Parameters* | 							         |						|
+            |  connect to jira          |  asimmons     | options= {'http://devjira01'}      | 						|
+            |  ${issue}					|  create issue |  ${issue_field_dict}	             |  True 			 	|
+            |  add attchment to issue	|  ${issue}		|  ./logfile.text			         |  LogInformation.txt	|
         """
         self.jira.add_attachment(issue=issue, attachment=attachment,
                                  filename=filename)
