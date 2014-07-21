@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="JiraRobot : Robot library based on jira-python" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>JiraRobot</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/NaviNet/JiraRobot">View on GitHub</a>
+
+          <h1 id="project_title">JiraRobot</h1>
+          <h2 id="project_tagline">Robot library based on jira-python</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/NaviNet/JiraRobot/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/NaviNet/JiraRobot/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="jirarobot-library-for-robot-framework" class="anchor" href="#jirarobot-library-for-robot-framework"><span class="octicon octicon-link"></span></a>JiraRobot library for Robot Framework</h1>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>JiraRobot is a Robot Framework Library to interact with JIRA through JIRA's REST API. JiraRobot uses a python library called <a href="https://pypi.python.org/pypi/jira/0.25">jira-python</a>.</p>
+
+<ul>
+<li>Information about JiraRobot keywords can be found on the <a href="http://navinet.github.io/JiraRobot/JiraRobot-KeywordDocumentation.html">JiraRobot Keyword Documentation</a> page.</li>
+<li>The API documentaton for jira-python can be found <a href="https://jira-python.readthedocs.org/en/latest/index.html">here</a>
+</li>
+<li>So far this library has been tested and fuctions with JIRA versions 5 and 6</li>
+</ul><h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>Python 2.7.4 (Newer versions not tested)</li>
+<li>Robot Framework 2.8.4 (Newer versions not tested)</li>
+<li>jira 0.25 (python library) (Newer versions not tested)</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h4>
+<a name="using-pip" class="anchor" href="#using-pip"><span class="octicon octicon-link"></span></a>Using pip</h4>
+
+<p>The recommended installation tool is <a href="http://pip-installer.org">pip</a>.</p>
+
+<p>Install pip.
+Enter the following:</p>
+
+<pre><code>pip install JiraRobot
+</code></pre>
+
+<p>Append <code>--upgrade</code> to update both the library and all 
+its dependencies to the latest version:</p>
+
+<pre><code>pip install --upgrade JiraRobot
+</code></pre>
+
+<p>To install a specific version enter:</p>
+
+<pre><code>pip install JiraRobot==(DesiredVersion)
+</code></pre>
+
+<h4>
+<a name="manual-installation" class="anchor" href="#manual-installation"><span class="octicon octicon-link"></span></a>Manual Installation</h4>
+
+<p>To install JiraRobot manually, install all dependency libraries before installing JiraRobot.</p>
+
+<p>1) Install <a href="http://code.google.com/p/robotframework/wiki/Installation">Robot Framework installed</a>.</p>
+
+<p>2) Download source distributions (<code>*.tar.gz</code> / <code>*.zip</code>) for the library and its
+   dependencies.</p>
+
+<p>Jira-Python dependencies:</p>
+
+<ul>
+<li><a href="https://pypi.python.org/pypi/requests/2.2.1">https://pypi.python.org/pypi/requests</a></li>
+<li><a href="https://pypi.python.org/pypi/oauthlib/0.6.3">https://pypi.python.org/pypi/oauthlib</a></li>
+<li><a href="https://pypi.python.org/pypi/ipython/2.1.0">https://pypi.python.org/pypi/ipython</a></li>
+<li>
+<p><a href="https://pypi.python.org/pypi/tlslite/0.4.6">https://pypi.python.org/pypi/tlslite</a></p>
+
+<p>JiraRobot and dependencies:</p>
+</li>
+<li><p><a href="https://pypi.python.org/pypi/jirarobot">https://pypi.python.org/pypi/jirarobot</a></p></li>
+<li><a href="https://pypi.python.org/pypi/jira/0.25">https://pypi.python.org/pypi/jira</a></li>
+</ul><p>3) Extract each source distribution to a temporary location using 7zip (or your preferred zip program).</p>
+
+<p>4) Open command line and go to each directory that was created from extraction and install each project using:</p>
+
+<pre><code>   python setup.py install
+</code></pre>
+
+<h4>
+<a name="uninstall" class="anchor" href="#uninstall"><span class="octicon octicon-link"></span></a>Uninstall</h4>
+
+<p>To uninstall JiraRobot use the following pip command: </p>
+
+<pre><code>pip uninstall JiraRobot
+</code></pre>
+
+<p>However, if the package was installed manually it will need to be uninstalled manually:</p>
+
+<p>1) Navigate to <code>C:\Python27</code> and delete JiraRobotTests</p>
+
+<p>2) Navigate to <code>C:\Python27\Lib\site-packages</code> and delete JiraRobot-1.0-py2.7.egg-info and the folder <code>JiraRobot</code></p>
+
+<h2>
+<a name="directory-layout" class="anchor" href="#directory-layout"><span class="octicon octicon-link"></span></a>Directory Layout</h2>
+
+<p><em>JiraRobot/JiraRobot.py</em> :
+    The Robot Python Library that makes use of Jira-Python.</p>
+
+<p><em>Tests/Acceptance/JiraRobotTest.txt</em> :
+    Example test file to display what various keywords from JiraRobot Library accomplish</p>
+
+<p><em>doc/JiraRobot-KeywordDocumentation.html</em> :
+    Keyword documentation for the JiraRobot library.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To write tests with Robot Framework and JiraRobot, 
+JiraRobot must be imported into your Robot test suite.
+See <a href="http://code.google.com/p/robotframework/wiki/UserGuide">Robot Framework User Guide</a> for more information.</p>
+
+<h2>
+<a name="running-the-demo" class="anchor" href="#running-the-demo"><span class="octicon octicon-link"></span></a>Running the Demo</h2>
+
+<p>The test file <em>JiraRobotTest.txt</em>, is an easily executable test for Robot Framework using JiraRobot Library. 
+For in depth detail on how the keywords function, read the Keyword documentation found here: <a href="http://navinet.github.io/JiraRobot/JiraRobot-KeywordDocumentation.html">Keyword Documentation</a></p>
+
+<p>Before running the tests, certain variables must be changed to make a successful test run; </p>
+
+<ul>
+<li>jirausername - The user you wish to authenticate with </li>
+<li>jirapassword - If a username is given this can be set as that users password. Optional, but if username is given it will prompt for password at test execution but won't save the password</li>
+<li>jiraserver - The url of the JIRA server to connect to</li>
+<li>usertoassign - The second user to assign to the second issue created (should be different from the orignal user but can be the same if you desire)</li>
+</ul><p>In the create issue keywords the variables below may need changed to match yoru JIRA server</p>
+
+<ul>
+<li>project</li>
+<li>issue type</li>
+<li>priority </li>
+</ul><p>To run the test after installing, navigate to <code>C:\Python\JiraRobotTests</code> directory. Open a command prompt withing this folder and run:</p>
+
+<pre><code>pybot JiraRobotTest.txt
+</code></pre>
+
+<h2>
+<a name="things-to-note-when-creating-issues" class="anchor" href="#things-to-note-when-creating-issues"><span class="octicon octicon-link"></span></a>Things To Note When Creating Issues</h2>
+
+<p>The <a href="https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Create+Issue">Create Issues Example</a> page is full of useful information in what is required for creating issues, including customfields and issue field value types which are  explained in simple terms below.</p>
+
+<p>When using the <em>Create Issue</em> keyword a dictionary must be passed in, in the form of a string (see the <a href="http://navinet.github.io/JiraRobot/JiraRobot-KeywordDocumentation.html">Keyword Documentation</a> for more information). </p>
+
+<p>In this dictionary/string issue field names must be stated along with their respective values. Some field types my only accept certain types of values or patterns e.g. Date Fields must be input in the format 'YYYY-MM-DD' and MultiSelect fields will only accept an array of dictionaries ("customfield_10008": [ {"value": "red" }, {"value": "blue" }, {"value": "green" }]). It is very important to get the value type right or an error will be thrown so check <a href="https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Create+Issue#JIRARESTAPIExample-CreateIssue-Examplesofhowtosetcustomfielddataforotherfieldtypes:">here</a> for more information on field and their value types.</p>
+
+<p>Some issues may have custom fields the names of these fields is the ID of the field itself generally in the form 'customfield_(NUM)'. The ID of the field can be found by inspecting the element in an internet browser and getting the element ID. More information can be found <a href="https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Create+Issue#JIRARESTAPIExample-CreateIssue-Exampleofcreatinganissueusingcustomfields">here</a>.</p>
+
+<p>It may be of use to follow the example issue creation in the <em>JiraRobotTest.txt</em> file.</p>
+
+<h2>
+<a name="getting-help" class="anchor" href="#getting-help"><span class="octicon octicon-link"></span></a>Getting Help</h2>
+
+<p>The <a href="http://groups.google.com/group/robotframework-users">user group for Robot Framework</a> is the best place to get help. Include in the post:</p>
+
+<ul>
+<li>Full description of what you are trying to do and expected outcome</li>
+<li>Version number of JiraRobot, Robot Framework, and Jira-Python</li>
+<li>Traceback or other debug output containing error information</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">JiraRobot maintained by <a href="https://github.com/NaviNet">NaviNet</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
