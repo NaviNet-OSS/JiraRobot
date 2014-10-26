@@ -67,7 +67,7 @@ class JiraRobot:
 
         else:
             try:
-                self.jira = JIRA(JIRAOptions, basic_auth=(str(JIRAUsername),
+                self.jira = JIRA(options=JIRAOptions, basic_auth=(str(JIRAUsername),
                                  str(JIRAPassword)))
             except:
                 sys.__stdout__.write("\nAuthentication to JIRA unsuccessful. Ensure the user used has sufficient access and that Username and Password were correct\n\n")
