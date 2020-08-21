@@ -51,6 +51,6 @@ setup(name              = 'JiraRobot',
 							'jira >= 0.25'
 				],
       packages          = ['JiraRobot'],
-      data_files        = [('JiraRobotTests', ['Tests/acceptance/JiraRobotTest.txt', 'Tests/acceptance/FILE.txt', 'Docs/JiraRobot-KeywordDocumentation.html'])],
+      data_files        = [('JiraRobotTests', ['Tests/Acceptance/JiraRobotTest.txt', 'Tests/Acceptance/FILE.txt', 'Docs/JiraRobot-KeywordDocumentation.html'])],
       download_url      = 'https://github.com/NaviNet/JiraRobot/tarball/1.0',
       )
