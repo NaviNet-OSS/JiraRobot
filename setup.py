@@ -42,15 +42,15 @@ setup(name              = 'JiraRobot',
                               "Programming Language :: Python",
                               "Development Status :: 4 - Beta",
                               "Intended Audience :: Developers",
-                              "Programming Language :: Python :: 2.7",
+                              "Programming Language :: Python :: 3.6",
                               "Topic :: Software Development :: Testing",
                               "Topic :: Software Development :: Quality Assurance"
                         ],
       install_requires  = [
-							'robotframework >= 2.8.4',
+							'robotframework >= 3.2.2',
 							'jira >= 0.25'
 				],
       packages          = ['JiraRobot'],
       data_files        = [('JiraRobotTests', ['Tests/acceptance/JiraRobotTest.txt', 'Tests/acceptance/FILE.txt', 'Docs/JiraRobot-KeywordDocumentation.html'])],
-      download_url      = 'https://github.com/NaviNet/JiraRobot/tarball/1.0',
+      download_url      = 'https://github.com/NaviNet/JiraRobot/tarball/1.1',
       )

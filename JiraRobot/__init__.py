@@ -14,8 +14,8 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-from JiraRobot import JiraRobot
-from version import VERSION
+from .JiraRobot import JiraRobot
+from .version import VERSION
 
 _version_ = VERSION
 

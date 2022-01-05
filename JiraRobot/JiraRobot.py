@@ -55,7 +55,7 @@ class JiraRobot:
         if JIRAUsername is not None and (JIRAPassword is "" or JIRAPassword is None):
             JIRAPassword = getpass.getpass("\nJIRA Password: ")
 		
-        print JIRAUsername
+        print(JIRAUsername)
 
         JIRAOptions = eval(options)
         if JIRAUsername is None:
@@ -101,7 +101,7 @@ class JiraRobot:
                 |  ${issue}				|  create issue 	|  ${issue_field_dict}									|  True |
         """
         issue_field_dict = eval(str(issue_field_dict))
-        print issue_field_dict
+        print(issue_field_dict)
 
         new_issue = self.jira.create_issue(issue_field_dict)
         if assign_current_user is True:
