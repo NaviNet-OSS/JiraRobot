@@ -13,9 +13,9 @@ JiraRobot is a Robot Framework Library to interact with JIRA through JIRA's REST
 
 Requirements
 ------------
-* Python 2.7.4 (Newer versions not tested)
-* Robot Framework 2.8.4 (Newer versions not tested)
-* jira 0.25 (python library) (Newer versions not tested)
+* Python 3.6 or newer ( tested on 3.8)
+* Robot Framework 3.2.2  (Newer versions not tested)
+* jira 3.1.1 (python library) (Newer versions not tested)
 
 Installation
 ------------
@@ -72,9 +72,9 @@ To uninstall JiraRobot use the following pip command:
 
 However, if the package was installed manually it will need to be uninstalled manually:
 
-1) Navigate to ``C:\Python27`` and delete JiraRobotTests
+1) Navigate to ``C:\Python36`` and delete JiraRobotTests
 
-2) Navigate to ``C:\Python27\Lib\site-packages`` and delete JiraRobot-1.0-py2.7.egg-info and the folder ``JiraRobot``
+2) Navigate to ``C:\Python36\Lib\site-packages`` and delete JiraRobot-1.0-py2.7.egg-info and the folder ``JiraRobot``
 
 Directory Layout
 ----------------
